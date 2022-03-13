@@ -1,4 +1,5 @@
 const request = require("request")
+const baseModule = require("hbs")
 
 const forcast = (lat,long,callback) =>{
 
@@ -10,14 +11,14 @@ const forcast = (lat,long,callback) =>{
     }else if(body.error){
       console.log("issue in finding location",undefined)
     }else{
-      // console.log(body)
+      console.log(body)
       // const payloadresp = {
       //   temperature: response.body.current.temperature,
       //   location: response.body.location.name,
       //   perception:response.body.current.precip
       // }
       // const {temperature,location,perception } = payloadresp
-      callback(undefined,"It is currently " + body.current.temperature + " out at " + body.location.name + ". There is a " + body.current.precip +"% rain today and its "+body.current.weather_descriptions[0])
+      callback(undefined,"It is currently " + body.current.temperature + " out at " + body.location.name + ". There is a " + body.current.precip +"% rain today and its "+body.current.weather_descriptions[0]+" Humidity at this place is "+body.current.humidity+". You may feel like its "+body.current.feelslike+".")
 
       // console.log(response.body.features[0].center[0])
       // console.log(response.body.features[0].center[1])
